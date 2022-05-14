@@ -1,0 +1,63 @@
+{% load static %}
+{% static "images" as baseUrl%}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title%} {% endblock %} | Students App</title>
+
+    <!-- favicon -->
+    <link rel="icon" href="{% static 'favicon.jpeg'%}" type="image/icon type">
+
+    <!--Navigation Bar Bootstrap-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+
+.custom-navbar{
+    box-shadow: 10px 10px 10px #eee;
+    z-index:;background-color: #fff;
+}
+.nav-link{
+    color: #f7204e!important;
+}
+.custom-toggler.navbar-toggler {
+    border-color: rgb(247,32,78);
+}
+
+{% block css %}  {% endblock %}
+
+</style>
+</head>
+<body>
+<!--Navigation Bar-->
+<nav class="navbar fixed-top navbar-expand-md custom-navbar navbar-dark">
+     <img class="navbar-brand" src="{% static 'logo.jpeg' %}" id="logo_custom" width="10%"  alt="logo">
+        <button class="navbar-toggler navbar-toggler-right custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+          <div class="collapse navbar-collapse " id="collapsibleNavbar">
+              <ul class="navbar-nav m-auto ">
+                <li class="nav-item">
+                  <a class="nav-link" href="/"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/add/"><b>Add Student</b></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/contactus/"><b>Contact Us</b></a>
+                </li>
+              </ul>
+              <form class="form-inline ml-auto" method="post" action="/search/">
+                  {% csrf_token %}
+                <input class="form-control mr-sm-2" type="text" name="search" placeholder="Name or ID">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+          </div>
+</nav>
+
+{% block body %} {% endblock %}
+</body>
+</html>

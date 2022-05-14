@@ -1,0 +1,93 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% static 'images' as baseUrl %}
+
+{% block title%} Contact Us {% endblock %}
+
+
+{% block css %}
+
+body{
+    background: #F0F0F0;
+}
+
+.contact-us{
+  width: 370px;
+  background: #ffffff;
+  padding: 40px;
+  margin: 90px auto;
+  border-radius: 30px;
+  position: relative;
+}
+
+.title h1{
+  color: #535274;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.form,
+.form-items{
+  width: 100%;
+}
+
+.form-items .input{
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 15px 40px;
+  box-sizing: border-box;
+  background: #ebeef1;
+  border: 0px;
+  outline: none;
+  border-radius: 30px;
+}
+
+.form-items .input.message{
+  height: 125px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  padding: 15px 15px;
+  resize: none;
+}
+
+.btnn{
+  background: #827ffe;
+  text-align: center;
+  color: #fff;
+  padding: 12px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+{% endblock %}
+
+{% block body %}
+<div class="contact-us">
+    <div class="title">
+      <h1><b>Contact us</b></h1>
+    </div>
+
+  <form action="/contactus/" method="post">
+    {% csrf_token %}
+    <div>
+      <div class="form-items">
+        <input type="text" class="input" id="name" name="name" placeholder="Name">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="form-items">
+        <input type="text" class="input" id="email" name="email" placeholder="Email">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div class="form-items">
+        <textarea class="input message" id="message" name="message" cols="30" rows="10" placeholder="Message..."></textarea>
+      </div>
+      <div>
+        <button type="submit" class="btnn">Submit<i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+{% endblock %}

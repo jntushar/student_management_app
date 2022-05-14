@@ -1,0 +1,91 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% static 'images' as baseUrl %}
+
+{% block title%} New Student {% endblock %}
+
+{% block css %}
+body {
+     background: #F0F0F0;
+     background-size: cover;
+}
+
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    background-color: #FFFFFF;
+}
+
+*[role="form"] h2 {
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 5%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+
+{% endblock %}
+
+{% block body %}
+<br><br><br><br>
+<div class="container">
+    <form class="form-horizontal" role="form" action="/add/" method="post">
+        {% csrf_token %}
+        <h2>Add New Student</h2>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">First Name:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" name="first_name" autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Last Name:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" name="last_name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Gender: </label>
+            <div class="col-sm-9">
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Email: </label>
+            <div class="col-sm-9">
+                <input type="email" id="email" class="form-control" name= "email">
+            </div>
+        </div>
+         <div class="form-group">
+            <label class="col-sm-3 control-label">School Name: </label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" name= "school_name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Book:  </label>
+            <div class="col-sm-9">
+                <input type="text"  class="form-control" name= "book">
+            </div>
+        </div>
+         <div class="form-group">
+            <label class="col-sm-3 control-label">Pages:  </label>
+            <div class="col-sm-9">
+                <input type="text"  class="form-control" name= "book_pages">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

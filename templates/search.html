@@ -1,0 +1,81 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% static 'images' as baseUrl %}
+
+{% block title%} Details {% endblock %}
+
+{% block css %}
+
+body{
+    background: #F0F0F0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+}
+
+.left-column {
+  width: 65%;
+  position: relative;
+}
+
+.right-column {
+  width: 35%;
+  margin-top: 60px;
+}
+
+.left-column img {
+  width: 45%;
+  position: absolute;
+  left: 80;
+  top: 70;
+}
+
+/* student-details */
+
+.student-details h1 {
+  font-weight: 150;
+  font-size: 26px;
+  color: #535c53;
+  letter-spacing: -1px;
+}
+
+.student-details b {
+  color: #000000;
+}
+
+{% endblock %}
+
+
+{% block body %}
+<br><br>
+{% for student in students %}
+<main class="container">
+  <!-- Left Column -->
+  <div class="left-column">
+    <img data-image="black" src="{% static 'student.jpeg' %}" alt="">
+  </div>
+
+  <!-- Right Column -->
+  <div class="right-column">
+
+    <!-- Student Details -->
+
+    <div class="student-details">
+        <h1><b>Id:</b> {{student.id}}</h1><br>
+        <h1><b>Name:</b> {{student.first_name}} {{student.last_name}}</h1><br>
+        <h1><b>Gender:</b> {{student.gender}}</h1><br>
+        <h1><b>School:</b> {{student.school_name}}</h1><br>
+        <h1><b>Book:</b> {{student.book}}</h1><br>
+        <h1><b>Pages:</b> {{student.book_pages}}</h1><br>
+      <br>
+    </div>
+
+  </div>
+</main><br>
+{% endfor %}
+{% endblock %}
+
